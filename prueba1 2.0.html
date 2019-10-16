@@ -1,0 +1,77 @@
+<!--abrimos un nuevo documento tipo html 5-->
+<!DOCTYPE html>
+	<html>
+<!--se abre la cabezera -->
+		<head>
+<!--el meta aporta información al programa sobre el encabezado de respuesta HTTP -->
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" lang="es-es">
+<!--se le añade un titulo al programa -->
+				<title>prueba pruebosa</title>
+<!--estos link´s son DNS de bootstrap -->
+				<!-- Latest compiled and minified CSS -->
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+				<!-- Optional theme -->
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+				<!-- Latest compiled and minified JavaScript -->
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!--se terminan las DNS´s de bootstrap -->
+		</head>
+<!--cierre del encabezado -->
+		<body style ="background-color: black">
+<!--abrimos el cuerpo del programa con un color de fondo, en este caso negro -->
+			<marquee direction="right">
+<!--el "marquee" es una función tipo CSS que tiene como funcionamiento instertar un area de texto pero en movimiento(dinámica)-->
+ 			 			<img src="https://media0.giphy.com/media/39GAXpLVKvYRO/giphy.gif" border="0"  width="75" height="75">
+<!--el "img" tiene como función insterar una imagen o gif al video -->
+  				 	<font size= 8 face="Comic Sans MS,arial,verdana" color=white>hola mundo :3
+<!--"font" nos permite editar el tipo de formato a la escritura que posteriormente se tiene que escribir -->
+  				 		 <img src="https://media0.giphy.com/media/39GAXpLVKvYRO/giphy.gif" border="0"  width="75" height="75" >
+ <!--insertamos otra imagen con fin de lujo --> 
+						</font>
+<!--se cierra el comando para editar la escritura-->
+				</marquee>
+<!--se cierra la función que permite que el texto o imagenes esten en movimiento -->
+				<input id="fileInput" type="file" size="50" class = "table table-bordered" style="color: white"  >
+<!--la función  input:type"file" nos permite que el usuario seleccione un archivo -->
+				<table class = "table table-striped table-bordered table-hover" style="color: black" id="fileOutput" face = "Comic Sans MS,arial,verdana" border="2"></table>
+<!--abrimos una tabla, la cual editamos con clases bootstrap -->
+				<script type="text/javascript">
+//abrimos un script tipo javascript
+					function processFiles(x) {
+//con esta funcion podemos realizar una lectura de  cualquier texto, y a esa función meterla en una variable
+						var archivoo = x.target.files[0];
+//se crea una variable en la cual se guarda o captura el documento que se leyó previamente
+						var lectorr = new FileReader();
+//se crea una variable que lea el documento antes capturado
+							lectorr.onload = function (x){
+//carga lo que contiene la variable lectorr
+							var salida = x.target.result;
+//se crea una variable que capture el resultado le "x"
+							mostrar(salida);
+//a la variable tipo objetivo se le declara para llamar a "salida"
+						};
+						lectorr.readAsText(archivoo);
+//a la variable lectorr le agregamos la extención readAsText para leer nuestra variable archivoo que almacena el documento
+						}
+						function mostrar(salida){
+//esta función hace lo que mostrar(salida) puede hacer, hacer la función de "salida"
+							var tabla = document.getElementById('fileOutput');
+//en la varible "tabla" obtenemos el elemento de nuestra id "fileOutput"
+							var repet = salida.split("\n");
+//en la variable "repet" guardamos en un elemento (como si fuese un vector) cada vez que el documento leído tenga un salto de linea
+							repet.forEach(function(y){
+//abrimos un forEach enlazado con la variable respet y con una función llamada "y"
+								y = y.split("\\");
+// en la funcion "y" indicamos que se guarde un elemento cada vez que un "\" aparesca
+								tabla.innerHTML += "<tr>"+"<td>"+y[0]+"</td>"+"<td>"+y[1]+"</td>"+"<td>"+y[2]+"</td>"+"<td>"+y[3]+"</td>"+"<td>"+y[4]+"</td>"+"<td>"+y[5]+"</td>"+"<td>"+y[6]+"</td>"+"</tr>";
+//anidamos la tabla que hicimos y editamos anteriormente con bootstrap con la funcón "y"
+							});
+						}
+						document.getElementById('fileInput').addEventListener('change',processFiles, false);
+//a la extracción del "dileutput" se le agrega un "change" osea, un cambio que ejecute la función processFiles
+				</script>
+<!--se cierra el script -->
+		</body>
+<!--se cierra el cuerpo del programa -->
+</html>
+<!--terminación del programa tipo hatml5-->
